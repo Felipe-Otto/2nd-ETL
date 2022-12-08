@@ -1,0 +1,69 @@
+{
+	"name": "9executePipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "lookUp",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "3lookup",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "getMetadata",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "lookUp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "2getMetadata",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Parameters",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "getMetadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "8parameters",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"parametro": "60"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "activities1"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-12-07T18:53:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
