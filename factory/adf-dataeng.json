@@ -1,0 +1,9 @@
+{
+	"name": "adf-dataeng",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "79228cb7-08cd-4a91-a270-40f57e802b85",
+		"tenantId": "11dbbfe2-89b8-4549-be10-cec364e59551"
+	}
+}
